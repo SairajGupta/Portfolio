@@ -133,7 +133,9 @@ export default function Hero({ onNavClick }: HeroProps) {
               </text>
             </svg>
           </div>
-          <img src="/profilenew.png" alt="Hero Portrait" />
+          <div className="hero-image-clip">
+            <img src="/profilenew.png" alt="Hero Portrait" />
+          </div>
         </div>
       </div>
 
