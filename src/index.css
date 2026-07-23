@@ -2197,8 +2197,9 @@ body {
   .nav-links, .btn-nav { display: none; }
   .hamburger { display: flex; }
   .services-grid { grid-template-columns: 1fr; }
-  .hero-stats { flex-direction: column; padding: 20px; width: 100%; }
-  .stat-divider { width: 80%; height: 1px; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 32px 16px; padding: 24px 16px; width: 100%; }
+  .stat-item { padding: 0; }
+  .stat-divider { display: none; }
   .form-row { grid-template-columns: 1fr; }
   .budget-options { grid-template-columns: 1fr; }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
