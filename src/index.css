@@ -263,18 +263,18 @@ body {
 }
 
 .logo-sg {
+  display: none;
+}
+
+.logo-img {
   width: 38px;
   height: 38px;
-  background: linear-gradient(135deg, var(--amber-500), var(--amber-600));
-  color: var(--charcoal-950);
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 0.9rem;
   border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  background: #ffffff;
+  padding: 3px;
   box-shadow: 0 0 16px rgba(245, 158, 11, 0.4);
+  flex-shrink: 0;
 }
 
 .logo-text {

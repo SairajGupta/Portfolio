@@ -2,7 +2,6 @@
 import { useState, type FormEvent } from 'react';
 import {
   Mail,
-  MessageSquare,
   Lock,
   CheckCircle2,
   Send,
