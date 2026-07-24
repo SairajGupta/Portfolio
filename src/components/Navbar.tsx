@@ -42,7 +42,7 @@ export default function Navbar() {
             className="nav-logo"
             onClick={(e) => { e.preventDefault(); handleNavClick('#home'); }}
           >
-            <img src="/Logo.png" alt="Sairaj Gupta Logo" className="logo-img" />
+            <img src="/logo.png" alt="Sairaj Gupta Logo" className="logo-img" />
             <span className="logo-text">Sairaj Gupta<span className="amber">.</span></span>
           </a>
 

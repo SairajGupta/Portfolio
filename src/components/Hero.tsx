@@ -52,7 +52,7 @@ const statDivider = {
 
 export default function Hero({ onNavClick }: HeroProps) {
   return (
-    <section className="hero" id="home">
+    <section className="hero" id="home" style={{ minHeight: 'auto' }}>
       <div className="hero-bg-grid" />
       <div className="hero-orb orb1" />
       <div className="hero-orb orb2" />
@@ -94,6 +94,7 @@ export default function Hero({ onNavClick }: HeroProps) {
             </a>
           </div>
 
+
           <motion.div 
             className="hero-stats"
             variants={statsContainer}
@@ -120,6 +121,19 @@ export default function Hero({ onNavClick }: HeroProps) {
               <span className="stat-label">Friendly</span>
             </motion.div>
           </motion.div>
+
+          {/* Mobile-only bust photo — above marquee */}
+          <div className="mobile-profile-wrap">
+            <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" className="mobile-halo-svg">
+              <path id="mobile-halo-path" d="M 150,150 m -120,0 a 120,120 0 1,1 240,0 a 120,120 0 1,1 -240,0" fill="none" />
+              <text fill="var(--amber-500)" fontSize="11" fontWeight="bold" letterSpacing="3.5">
+                <textPath href="#mobile-halo-path" startOffset="0%" textLength="754">
+                  FULL-STACK DEV • BUSINESS SOLUTIONS • SAAS PRODUCTS • AI INTEGRATION • WEB DESIGN •
+                </textPath>
+              </text>
+            </svg>
+            <img src="/profilenew.png" alt="Sairaj Gupta" className="mobile-profile-img" />
+          </div>
         </div>
         
         <div className="hero-image-wrapper">
