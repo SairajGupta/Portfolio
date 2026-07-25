@@ -7,29 +7,29 @@ import {
   Send,
   Check,
 } from 'lucide-react';
-import { BUDGET_OPTIONS } from '../data/portfolioData';
+import CountrySelect from './CountrySelect';
 
 interface FormData {
   name: string;
   email: string;
   phone: string;
+  country: string;
   message: string;
-  budget: string;
 }
 
 const initialForm: FormData = {
   name: '',
   email: '',
   phone: '',
+  country: '',
   message: '',
-  budget: '',
 };
 
 const PERKS = [
   'Free consultation call',
   'No upfront payment required',
   'Reply within 24 hours',
-  'Fixed pricing, no surprises',
+  'Pricing tailored to your region',
 ];
 
 export default function Contact() {
@@ -44,10 +44,16 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
+  const handleCountryChange = (value: string) => {
+    setForm((prev) => ({ ...prev, country: value }));
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    // Simulate network delay — replace with real API call (Formspree / EmailJS etc.)
+    // payload includes country — use with Formspree / EmailJS etc.
+    const payload = { ...form };
+    console.log('Form payload:', payload);
     await new Promise((res) => setTimeout(res, 1500));
     setSubmitting(false);
     setSubmitted(true);
@@ -167,29 +173,12 @@ export default function Contact() {
                 </div>
 
                 <div className="form-group">
-                  <label>Budget Range (optional)</label>
-                  <div className="budget-options">
-                    {BUDGET_OPTIONS.map((opt) => (
-                      <label key={opt.value} className="budget-opt">
-                        <input
-                          type="radio"
-                          name="budget"
-                          value={opt.value}
-                          checked={form.budget === opt.value}
-                          onChange={handleChange}
-                          onClick={() => {
-                            if (form.budget === opt.value) {
-                              setForm((prev) => ({ ...prev, budget: '' }));
-                            }
-                          }}
-                        />
-                        <span>
-                          {opt.label}
-                          <small>{opt.sublabel}</small>
-                        </span>
-                      </label>
-                    ))}
-                  </div>
+                  <label htmlFor="country">Your Country *</label>
+                  <CountrySelect
+                    value={form.country}
+                    onChange={handleCountryChange}
+                    required
+                  />
                 </div>
 
                 <button type="submit" className="btn-primary btn-submit" disabled={submitting}>

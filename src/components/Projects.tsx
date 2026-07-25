@@ -37,12 +37,33 @@ function ProjectCard({ project, reverse, onNavClick }: ProjectCardProps) {
       {/* Browser mock visual */}
       <div className={`project-visual ${visualClassMap[project.visualType]}`}>
         <div className={glowClassMap[project.visualType]} />
-        <div className="pv-window">
-          <div className="pv-bar">
-            <span /><span /><span />
+        {project.link ? (
+          <a href={project.link} target="_blank" rel="noreferrer" className="pv-window" style={{ display: 'block', textDecoration: 'none' }}>
+            <div className="pv-bar">
+              <span /><span /><span />
+            </div>
+            {project.imageUrl ? (
+              <div className="pv-image-container">
+                <img src={project.imageUrl} alt={project.title} className="pv-img" />
+              </div>
+            ) : (
+              <Visual />
+            )}
+          </a>
+        ) : (
+          <div className="pv-window">
+            <div className="pv-bar">
+              <span /><span /><span />
+            </div>
+            {project.imageUrl ? (
+              <div className="pv-image-container">
+                <img src={project.imageUrl} alt={project.title} className="pv-img" />
+              </div>
+            ) : (
+              <Visual />
+            )}
           </div>
-          <Visual />
-        </div>
+        )}
         <div className="project-overlay">
           <span className="pv-label">{project.title.split('—')[0].trim()}</span>
         </div>
@@ -71,12 +92,17 @@ function ProjectCard({ project, reverse, onNavClick }: ProjectCardProps) {
         </div>
 
         <div className="project-actions">
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noreferrer" className="btn-primary" style={{ padding: '10px 20px', fontSize: '0.9rem' }}>
+              <span>Live Demo</span>
+            </a>
+          )}
           <a
             href="#contact"
             className="btn-outline"
             onClick={(e) => { e.preventDefault(); onNavClick('#contact'); }}
           >
-            {project.ctaText}
+            <span>{project.ctaText}</span>
             <ArrowRight size={14} />
           </a>
         </div>

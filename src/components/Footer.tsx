@@ -19,8 +19,8 @@ export default function Footer({ onNavClick }: FooterProps) {
               className="nav-logo"
               onClick={(e) => { e.preventDefault(); onNavClick('#home'); }}
             >
-              <span className="logo-sg">SG</span>
-              <span className="logo-text">Sairaj Gupta</span>
+              <img src="/sg-logo.png" alt="Sairaj Gupta Logo" className="logo-img" />
+              <span className="logo-text">Sairaj Gupta<span className="amber">.</span></span>
             </a>
             <p>Building modern web applications and digital solutions that help businesses grow.</p>
             <div className="footer-socials">

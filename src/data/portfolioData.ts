@@ -1,5 +1,5 @@
 // src/data/portfolioData.ts
-import type { NavItem, ServiceItem, Project, WhyPoint, Skill, BudgetOption } from '../types';
+import type { NavItem, ServiceItem, Project, WhyPoint, Skill } from '../types';
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Home', href: '#home' },
@@ -48,31 +48,35 @@ export const PROJECTS: Project[] = [
     id: 'lawfirm',
     type: 'Legal',
     typeIcon: 'scale',
-    stack: 'HTML · CSS · JS',
-    title: 'LexPro — Law Firm Website',
-    description: 'A professional authority-building website for a law firm. Features a bold hero, practice areas, attorney profiles, and a consultation booking form designed to convert visitors into clients.',
+    stack: 'React · Tailwind CSS · TypeScript',
+    title: 'Al Mansoori & Partners — Law Firm',
+    description: 'A premium, authority-building website for a top-tier law firm in Dubai. Designed to convey trust and excellence, featuring dynamic practice areas, case statistics, and streamlined consultation booking.',
     highlights: [
-      'Mobile-responsive design',
-      'Consultation contact form',
-      'SEO-optimized structure',
+      '20+ Years Experience',
+      '500+ Cases Won',
+      '98% Client Satisfaction',
     ],
     ctaText: 'Want something like this?',
     visualType: 'law',
+    link: 'https://lawfirmsample.vercel.app/',
+    imageUrl: '/law-demo.png',
   },
   {
     id: 'clinic',
     type: 'Healthcare',
     typeIcon: 'stethoscope',
-    stack: 'Django · Python · SQLite',
-    title: 'MediDesk — Clinic Management System',
-    description: 'A full-stack multi-role web application for clinic operations. Separate dashboards for the Receptionist, Doctor, and Admin — covering appointments, patient records, and real-time reporting.',
+    stack: 'React · Tailwind CSS · FastAPI',
+    title: 'Healing Harmony — Clinic Website',
+    description: 'A professional and welcoming website for a general physician clinic. Features online appointment booking, WhatsApp integration, and prescription downloads to streamline patient care.',
     highlights: [
-      '3 role-based dashboards',
-      'Appointment & patient management',
-      'Built with Django + Python',
+      'Online appointment booking',
+      'Direct WhatsApp consultation',
+      'Modern, trust-building design',
     ],
     ctaText: 'Want something like this?',
     visualType: 'clinic',
+    link: 'https://kpclinic.vercel.app',
+    imageUrl: '/clinic-demo.png',
   },
   {
     id: 'emotion',
@@ -126,11 +130,6 @@ export const SKILLS: Skill[] = [
   { id: 'git', name: 'Git / Deployment', percent: 70 },
 ];
 
-export const BUDGET_OPTIONS: BudgetOption[] = [
-  { value: 'basic', label: '₹5k–10k', sublabel: 'Basic Site' },
-  { value: 'standard', label: '₹10k–25k', sublabel: 'Standard' },
-  { value: 'premium', label: '₹25k+', sublabel: 'Full Custom' },
-];
 
 export const FLOATING_TAGS: { label: string; icon: string }[] = [
   { label: 'Medical Clinics', icon: 'stethoscope' },

@@ -24,6 +24,8 @@ export interface Project {
   highlights: string[];
   ctaText: string;
   visualType: 'law' | 'clinic' | 'emotion';
+  link?: string;
+  imageUrl?: string;
 }
 
 export interface WhyPoint {
@@ -39,8 +41,3 @@ export interface Skill {
   percent: number;
 }
 
-export interface BudgetOption {
-  value: string;
-  label: string;
-  sublabel: string;
-}

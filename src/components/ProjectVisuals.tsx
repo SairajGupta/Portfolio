@@ -30,28 +30,32 @@ export function LawVisual() {
 export function ClinicVisual() {
   return (
     <div className="pv-content clinic-content">
-      <div className="clinic-sidebar">
-        <div className="cs-logo">Md</div>
-        <div className="cs-item active-item">Dashboard</div>
-        <div className="cs-item">Appointments</div>
-        <div className="cs-item">Patients</div>
-        <div className="cs-item">Reports</div>
-      </div>
-      <div className="clinic-main">
-        <div className="cm-header">Good Morning, Dr. Sharma</div>
-        <div className="cm-cards">
-          <div className="cmc">
-            <div className="cmc-n">24</div>
-            <div className="cmc-l">Today&apos;s Patients</div>
-          </div>
-          <div className="cmc cmc-amber">
-            <div className="cmc-n">8</div>
-            <div className="cmc-l">Pending</div>
-          </div>
+      <div className="clinic-nav">
+        <div className="clinic-logo">
+          Dr. Kajal <span>BHMS</span>
         </div>
-        <div className="cm-row"><span className="cm-dot green" /> 10:00 AM — John D.</div>
-        <div className="cm-row"><span className="cm-dot amber-dot" /> 10:30 AM — Sarah M.</div>
-        <div className="cm-row"><span className="cm-dot grey" /> 11:00 AM — Raj P.</div>
+        <div className="clinic-links">
+          <span /><span /><span /><span />
+        </div>
+        <div className="clinic-nav-btn">Book</div>
+      </div>
+      <div className="clinic-hero">
+        <div className="clinic-tags">
+          <div className="clinic-tag">Mon-Sat: 9AM - 8PM</div>
+          <div className="clinic-tag blue-tag">Healing Harmony</div>
+        </div>
+        <div className="clinic-title">
+          Compassionate<br />
+          <span>Care</span> for Every<br />
+          Stage of <span className="light-blue">Life</span>
+        </div>
+        <div className="clinic-desc">
+          Personalized healthcare focused on prevention, wellness, and long-term relationships.
+        </div>
+        <div className="clinic-actions">
+          <div className="clinic-btn primary">Book Appointment</div>
+          <div className="clinic-btn secondary">WhatsApp</div>
+        </div>
       </div>
     </div>
   );
