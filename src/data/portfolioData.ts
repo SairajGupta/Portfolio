@@ -78,21 +78,7 @@ export const PROJECTS: Project[] = [
     link: 'https://kpclinic.vercel.app',
     imageUrl: '/clinic-demo.png',
   },
-  {
-    id: 'emotion',
-    type: 'SaaS / Wellness',
-    typeIcon: 'brain',
-    stack: 'Django · Python · Team Project',
-    title: 'EmotionSpace — Mental Wellness SaaS',
-    description: 'A collaborative Django team project — a SaaS platform for emotional wellbeing. Features mood tracking, journaling, analytics dashboards, and a subscription model. Built with a team using agile practices.',
-    highlights: [
-      'Mood tracking & journaling',
-      'SaaS subscription model',
-      'Team collaboration project',
-    ],
-    ctaText: 'Interested in a SaaS?',
-    visualType: 'emotion',
-  },
+
 ];
 
 export const WHY_POINTS: WhyPoint[] = [

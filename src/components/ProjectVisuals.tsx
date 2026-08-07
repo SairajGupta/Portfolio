@@ -61,35 +61,4 @@ export function ClinicVisual() {
   );
 }
 
-export function EmotionVisual() {
-  return (
-    <div className="pv-content emotion-content">
-      <div className="em-header">
-        <div className="em-logo">EmotionSpace</div>
-        <div className="em-nav"><span /><span /></div>
-      </div>
-      <div className="em-hero">
-        <div className="em-title">
-          Your Mental Wellness<br />
-          <span>Companion</span>
-        </div>
-        <div className="em-sub">Track. Reflect. Grow.</div>
-        <div className="em-cta">Get Started Free</div>
-      </div>
-      <div className="em-cards">
-        <div className="em-card">
-          <div className="em-emoji">Calm</div>
-          <div className="em-mood">Relaxed</div>
-        </div>
-        <div className="em-card em-active">
-          <div className="em-emoji">Happy</div>
-          <div className="em-mood">Positive</div>
-        </div>
-        <div className="em-card">
-          <div className="em-emoji">Focus</div>
-          <div className="em-mood">Alert</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+

@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import FloatingContact from './components/FloatingContact';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 function CursorGlow() {
@@ -52,6 +53,7 @@ function App() {
         <Contact />
       </main>
       <Footer onNavClick={handleNavClick} />
+      <FloatingContact />
     </>
   );
 }

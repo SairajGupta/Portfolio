@@ -24,10 +24,10 @@ export default function Footer({ onNavClick }: FooterProps) {
             </a>
             <p>Building modern web applications and digital solutions that help businesses grow.</p>
             <div className="footer-socials">
-              <a href="#" target="_blank" rel="noreferrer"><GithubIcon size={18} /></a>
-              <a href="#" target="_blank" rel="noreferrer"><LinkedinIcon size={18} /></a>
-              <a href="#" target="_blank" rel="noreferrer"><TwitterIcon size={18} /></a>
-              <a href="mailto:sairajgupta12@email.com"><Mail size={18} /></a>
+              <a href="https://github.com/SairajGupta" target="_blank" rel="noreferrer"><GithubIcon size={18} /></a>
+              <a href="https://www.linkedin.com/in/sairajgupta/" target="_blank" rel="noreferrer"><LinkedinIcon size={18} /></a>
+              <a href="https://x.com/sairaj_127" target="_blank" rel="noreferrer"><TwitterIcon size={18} /></a>
+              <a href="mailto:srgupta1235@gmail.com"><Mail size={18} /></a>
             </div>
           </div>
 
@@ -70,13 +70,13 @@ export default function Footer({ onNavClick }: FooterProps) {
           {/* Col 4 */}
           <div className="footer-contact">
             <strong>Get In Touch</strong>
-            <a href="mailto:sairajgupta12@gmail.com" className="fc-item">
+            <a href="mailto:srgupta1235@gmail.com" className="fc-item">
               <Mail size={16} className="amber" />
-              sairajgupta12@gmail.com
+              srgupta1235@gmail.com
             </a>
             <div className="fc-item">
               <Phone size={16} className="amber" />
-              +91 98765 43210
+              +91 8200639614
             </div>
             <div className="fc-item">
               <MapPin size={16} className="amber" />

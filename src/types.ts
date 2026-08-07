@@ -23,7 +23,7 @@ export interface Project {
   description: string;
   highlights: string[];
   ctaText: string;
-  visualType: 'law' | 'clinic' | 'emotion';
+  visualType: 'law' | 'clinic';
   link?: string;
   imageUrl?: string;
 }

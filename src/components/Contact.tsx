@@ -7,6 +7,7 @@ import {
   Send,
   Check,
 } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 import CountrySelect from './CountrySelect';
 
 interface FormData {
@@ -36,6 +37,7 @@ export default function Contact() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [rateLimitError, setRateLimitError] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -50,13 +52,63 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setRateLimitError('');
+
+    // Rate limiting check: allow 3 sends, then 5 min cooldown
+    const historyString = localStorage.getItem('formSubmissionHistory');
+    let submissionHistory: number[] = [];
+    if (historyString) {
+      try {
+        submissionHistory = JSON.parse(historyString);
+      } catch (err) {
+        // ignore parse errors
+      }
+    }
+    
+    const now = Date.now();
+    const cooldownPeriod = 5 * 60 * 1000; // 5 minutes
+
+    // Remove timestamps older than the cooldown period
+    submissionHistory = submissionHistory.filter((timestamp) => now - timestamp < cooldownPeriod);
+
+    if (submissionHistory.length >= 3) {
+      const oldestInWindow = submissionHistory[0];
+      const timeSinceOldest = now - oldestInWindow;
+      
+      if (timeSinceOldest < cooldownPeriod) {
+        const remainingMinutes = Math.ceil((cooldownPeriod - timeSinceOldest) / 60000);
+        setRateLimitError(`Please wait ${remainingMinutes} minute(s) before sending another message.`);
+        return;
+      }
+    }
+
     setSubmitting(true);
-    // payload includes country — use with Formspree / EmailJS etc.
-    const payload = { ...form };
-    console.log('Form payload:', payload);
-    await new Promise((res) => setTimeout(res, 1500));
-    setSubmitting(false);
-    setSubmitted(true);
+    
+    try {
+      const payload = { ...form };
+      
+      // Read credentials from environment variables (.env file)
+      const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+      
+      if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+        console.error('EmailJS credentials are not fully set in the .env file.');
+      }
+      
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, payload, PUBLIC_KEY);
+      
+      // Record this submission
+      submissionHistory.push(now);
+      localStorage.setItem('formSubmissionHistory', JSON.stringify(submissionHistory));
+      
+      setSubmitted(true);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      alert('Failed to send message. Please try again later.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -89,16 +141,16 @@ export default function Contact() {
             </div>
 
             <div className="contact-socials">
-              <a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" title="WhatsApp">
+              <a href="https://wa.me/918200639614" target="_blank" rel="noreferrer" title="WhatsApp">
                 <WhatsAppIcon size={24} />
               </a>
-              <a href="mailto:sairajgupta12@gmail.com" title="Email">
+              <a href="mailto:srgupta1235@gmail.com" title="Email">
                 <Mail size={24} />
               </a>
-              <a href="#" target="_blank" rel="noreferrer" title="X (Twitter)">
-                <TwitterIcon size={24} />
+              <a href="https://x.com/sairaj_127" target="_blank" rel="noreferrer" title="X (Twitter)">
+                <XIcon size={24} />
               </a>
-              <a href="#" target="_blank" rel="noreferrer" title="LinkedIn">
+              <a href="https://www.linkedin.com/in/sairajgupta/" target="_blank" rel="noreferrer" title="LinkedIn">
                 <LinkedinIcon size={24} />
               </a>
             </div>
@@ -121,7 +173,7 @@ export default function Contact() {
                 </p>
               </div>
             ) : (
-              <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="name">Your Name *</label>
                   <input
@@ -130,6 +182,8 @@ export default function Contact() {
                     name="name"
                     placeholder="Dr. Sharma / Mr. Mehta..."
                     required
+                    pattern=".*\S+.*"
+                    title="This field is required"
                     value={form.name}
                     onChange={handleChange}
                   />
@@ -142,6 +196,8 @@ export default function Contact() {
                     name="email"
                     placeholder="you@yourbusiness.com"
                     required
+                    pattern=".*\S+.*"
+                    title="This field is required"
                     value={form.email}
                     onChange={handleChange}
                   />
@@ -181,6 +237,12 @@ export default function Contact() {
                   />
                 </div>
 
+                {rateLimitError && (
+                  <p className="form-error" style={{ color: '#ef4444', fontSize: '0.875rem', marginBottom: '1rem', marginTop: '-0.5rem' }}>
+                    {rateLimitError}
+                  </p>
+                )}
+
                 <button type="submit" className="btn-primary btn-submit" disabled={submitting}>
                   {submitting ? (
                     <div className="btn-spinner" />
@@ -213,14 +275,16 @@ const LinkedinIcon = ({ size = 24 }: { size?: number }) => (
   </svg>
 );
 
-const TwitterIcon = ({ size = 24 }: { size?: number }) => (
+const XIcon = ({ size = 24 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
+    <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
   </svg>
 );
 
 const WhatsAppIcon = ({ size = 24 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+    <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path>
+    <path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"></path>
   </svg>
 );

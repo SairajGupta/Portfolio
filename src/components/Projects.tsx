@@ -3,24 +3,21 @@ import { ArrowRight, Check } from 'lucide-react';
 import Icon from './Icon';
 import { PROJECTS } from '../data/portfolioData';
 import type { Project } from '../types';
-import { LawVisual, ClinicVisual, EmotionVisual } from './ProjectVisuals';
+import { LawVisual, ClinicVisual } from './ProjectVisuals';
 
 const visualMap: Record<Project['visualType'], React.FC> = {
   law: LawVisual,
   clinic: ClinicVisual,
-  emotion: EmotionVisual,
 };
 
 const visualClassMap: Record<Project['visualType'], string> = {
   law: 'law-visual',
   clinic: 'clinic-visual',
-  emotion: 'emotion-visual',
 };
 
 const glowClassMap: Record<Project['visualType'], string> = {
   law: 'pv-glow',
   clinic: 'pv-glow clinic-glow',
-  emotion: 'pv-glow emotion-glow',
 };
 
 interface ProjectCardProps {
