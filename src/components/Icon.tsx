@@ -26,6 +26,13 @@ import {
   Code2,
   TerminalSquare,
   Wrench,
+  Dumbbell,
+  ChefHat,
+  Scissors,
+  Bug,
+  Plane,
+  Heart,
+  Hammer,
   type LucideProps,
 } from 'lucide-react';
 import type { FC } from 'react';
@@ -56,6 +63,13 @@ const iconMap: Record<string, FC<LucideProps>> = {
   'code-2': Code2,
   'square-code': TerminalSquare,
   wrench: Wrench,
+  dumbbell: Dumbbell,
+  'chef-hat': ChefHat,
+  scissors: Scissors,
+  bug: Bug,
+  plane: Plane,
+  heart: Heart,
+  hammer: Hammer,
 };
 
 interface IconProps extends LucideProps {

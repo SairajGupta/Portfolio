@@ -144,7 +144,7 @@ export default function Contact() {
               <a href="https://wa.me/918200639614" target="_blank" rel="noreferrer" title="WhatsApp">
                 <WhatsAppIcon size={24} />
               </a>
-              <a href="mailto:srgupta1235@gmail.com" title="Email">
+              <a href="mailto:work@sairajgupta.tech" title="Email">
                 <Mail size={24} />
               </a>
               <a href="https://x.com/sairaj_127" target="_blank" rel="noreferrer" title="X (Twitter)">

@@ -24,7 +24,7 @@ const FloatingContact: React.FC = () => {
           </svg>
         </a>
         <a
-          href="mailto:srgupta1235@gmail.com"
+          href="mailto:work@sairajgupta.tech"
           className="floating-item email"
           title="Send an Email"
         >

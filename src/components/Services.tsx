@@ -61,6 +61,51 @@ export default function Services({ onNavClick }: ServicesProps) {
             </div>
           ))}
         </div>
+
+        {/* New Built for Small Business Owners Section */}
+        <div className="sbo-section reveal mt-32">
+          <div className="section-header align-center">
+            <h2 className="section-title">Built for Business Owners</h2>
+            <p className="sbo-subtitle">
+              You focus on your craft and leave the hassle of technology to <span className="amber" style={{ whiteSpace: 'nowrap' }}>Sairaj Gupta.</span>
+            </p>
+          </div>
+
+          <div className="sbo-grid">
+            {[
+              { id: 'gym', title: 'Gym & Fitness Centres', icon: 'dumbbell' },
+              { id: 'doctors', title: 'Doctors & Health Clinics', icon: 'stethoscope' },
+              { id: 'bakers', title: 'Bakers & Cake Shops', icon: 'chef-hat' },
+              { id: 'salon', title: 'Salon Owners', icon: 'scissors' },
+              { id: 'restaurants', title: 'Restaurants & Bars', icon: 'utensils' },
+              { id: 'pest', title: 'Pest Control Businesses', icon: 'bug' },
+              { id: 'garages', title: 'Car Garages & Mechanics', icon: 'wrench' },
+              { id: 'tours', title: 'Tours & Travels', icon: 'plane' },
+              { id: 'yoga', title: 'Yoga & Wellness', icon: 'heart' },
+              { id: 'handyman', title: 'Handyman Services', icon: 'hammer' },
+            ].map((item, i) => (
+              <div key={item.id} className={`sbo-card reveal reveal-delay-${Math.min(i % 4 + 1, 4)}`}>
+                <span className="sbo-card-title">{item.title}</span>
+                <div className="sbo-card-icon">
+                  <Icon name={item.icon} size={32} strokeWidth={1.5} />
+                </div>
+              </div>
+            ))}
+            
+            <div className="sbo-card sbo-cta-card reveal reveal-delay-3">
+              <div className="sbo-cta-content">
+                <span className="sbo-cta-title">And many more businesses like yours</span>
+              </div>
+              <a 
+                href="#contact" 
+                className="btn-primary sbo-cta-btn"
+                onClick={(e) => { e.preventDefault(); onNavClick('#contact'); }}
+              >
+                <span>Let's Talk</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
