@@ -1954,12 +1954,56 @@ input[type="text"], input[type="email"], textarea {
   box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
 }
 
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.contact-method-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: var(--charcoal-100);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 500;
+  transition: var(--transition);
+  width: fit-content;
+}
+
+.cml-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--glass-bg);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--amber-400);
+  transition: var(--transition);
+}
+
+.contact-method-link:hover {
+  color: var(--amber-400);
+  transform: translateX(6px);
+}
+
+.contact-method-link:hover .cml-icon {
+  background: var(--amber-glow);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.2);
+}
+
 /* Contact Form */
 .contact-form {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-lg);
-  padding: 36px;
+  padding: 28px;
   backdrop-filter: blur(8px);
 }
 
@@ -1970,7 +2014,7 @@ input[type="text"], input[type="email"], textarea {
 }
 
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 14px;
 }
 
 .form-group label {
@@ -1979,7 +2023,7 @@ input[type="text"], input[type="email"], textarea {
   font-size: 0.84rem;
   font-weight: 600;
   color: var(--charcoal-200);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .form-group input,
@@ -1989,7 +2033,7 @@ input[type="text"], input[type="email"], textarea {
   background: var(--charcoal-800);
   border: 1px solid var(--charcoal-600);
   border-radius: var(--radius-sm);
-  padding: 12px 16px;
+  padding: 10px 14px;
   font-family: var(--font-body);
   font-size: 0.92rem;
   color: var(--charcoal-100);
@@ -2040,7 +2084,7 @@ input[type="text"], input[type="email"], textarea {
   background: var(--charcoal-800);
   border: 1px solid var(--charcoal-600);
   border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  padding: 10px 14px;
   font-family: var(--font-body);
   font-size: 0.92rem;
   color: var(--charcoal-100);
@@ -2246,8 +2290,8 @@ input[type="text"], input[type="email"], textarea {
   width: 100%;
   justify-content: center;
   font-size: 1rem;
-  padding: 16px;
-  margin-top: 8px;
+  padding: 12px;
+  margin-top: 4px;
 }
 
 .btn-spinner {
@@ -2296,6 +2340,11 @@ input[type="text"], input[type="email"], textarea {
   padding: 60px 36px;
   text-align: center;
   backdrop-filter: blur(8px);
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .success-icon {
@@ -2648,4 +2697,11 @@ input[type="text"], input[type="email"], textarea {
   .sbo-grid { grid-template-columns: 1fr; }
   .sbo-cta-card { grid-column: span 1; flex-direction: column; gap: 16px; align-items: flex-start; }
   .sbo-cta-title { font-size: 1.2rem; }
+}
+
+/* --- NAV HOVER COLORS --- */
+.nav-link:hover, .footer-links a:hover, .footer-links span:hover, .fc-item:hover {
+  color: var(--amber-500) !important;
+  cursor: var(--cursor-pointer);
+  transition: color var(--transition);
 }

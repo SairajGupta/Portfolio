@@ -37,7 +37,7 @@ export default function Contact() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [rateLimitError, setRateLimitError] = useState('');
+  const [formError, setFormError] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -52,7 +52,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setRateLimitError('');
+    setFormError('');
 
     // Rate limiting check: allow 3 sends, then 5 min cooldown
     const historyString = localStorage.getItem('formSubmissionHistory');
@@ -77,7 +77,7 @@ export default function Contact() {
       
       if (timeSinceOldest < cooldownPeriod) {
         const remainingMinutes = Math.ceil((cooldownPeriod - timeSinceOldest) / 60000);
-        setRateLimitError(`Please wait ${remainingMinutes} minute(s) before sending another message.`);
+        setFormError(`Please wait ${remainingMinutes} minute(s) before sending another message.`);
         return;
       }
     }
@@ -105,7 +105,7 @@ export default function Contact() {
       setSubmitted(true);
     } catch (error) {
       console.error('EmailJS error:', error);
-      alert('Failed to send message. Please try again later.');
+      setFormError('Failed to send message. Please try again later.');
     } finally {
       setSubmitting(false);
     }
@@ -139,14 +139,18 @@ export default function Contact() {
                 </div>
               ))}
             </div>
-
-            <div className="contact-socials">
-              <a href="https://wa.me/918200639614" target="_blank" rel="noreferrer" title="WhatsApp">
-                <WhatsAppIcon size={24} />
+            <div className="contact-methods">
+              <a href="mailto:work@sairajgupta.tech" className="contact-method-link">
+                <div className="cml-icon"><Mail size={18} /></div>
+                <span>work@sairajgupta.tech</span>
               </a>
-              <a href="mailto:work@sairajgupta.tech" title="Email">
-                <Mail size={24} />
+              <a href="https://wa.me/919915499455" target="_blank" rel="noreferrer" className="contact-method-link">
+                <div className="cml-icon"><WhatsAppIcon size={18} /></div>
+                <span>+91 99154 99455</span>
               </a>
+            </div>
+            
+            <div className="contact-socials" style={{ marginTop: '24px' }}>
               <a href="https://x.com/sairaj_127" target="_blank" rel="noreferrer" title="X (Twitter)">
                 <XIcon size={24} />
               </a>
@@ -220,7 +224,7 @@ export default function Contact() {
                   <textarea
                     id="message"
                     name="message"
-                    rows={4}
+                    rows={3}
                     placeholder="What does your business do? What do you need on the website? Any deadline?"
                     required
                     value={form.message}
@@ -237,9 +241,9 @@ export default function Contact() {
                   />
                 </div>
 
-                {rateLimitError && (
+                {formError && (
                   <p className="form-error" style={{ color: '#ef4444', fontSize: '0.875rem', marginBottom: '1rem', marginTop: '-0.5rem' }}>
-                    {rateLimitError}
+                    {formError}
                   </p>
                 )}
 

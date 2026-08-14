@@ -76,7 +76,7 @@ export default function Footer({ onNavClick }: FooterProps) {
             </a>
             <div className="fc-item">
               <Phone size={16} className="amber" />
-              +91 8200639614
+              +91 99154 99455
             </div>
             <div className="fc-item">
               <MapPin size={16} className="amber" />
@@ -91,7 +91,7 @@ export default function Footer({ onNavClick }: FooterProps) {
 
         <div className="footer-bottom">
           <span>© {year} Sairaj Gupta. All rights reserved.</span>
-          <span>Designed &amp; Built with ❤️</span>
+          <span>Designed &amp; Built with 💛</span>
         </div>
       </div>
     </footer>

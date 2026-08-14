@@ -13,7 +13,7 @@ const FloatingContact: React.FC = () => {
     <div className="floating-contact-container">
       <div className={`floating-menu ${isOpen ? 'open' : ''}`}>
         <a
-          href="https://wa.me/918200639614"
+          href="https://wa.me/919915499455"
           target="_blank"
           rel="noopener noreferrer"
           className="floating-item whatsapp"
